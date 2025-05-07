@@ -1,19 +1,9 @@
 {
     "version": 2,
-    "builds": [
-      { "src": "api/*.js", "use": "@vercel/node" },
-      { "src": "public/**", "use": "@vercel/static" }
-    ],
     "routes": [
       { "src": "/scrape", "dest": "/api/scrape.js" },
       { "src": "/calculate-rfc", "dest": "/api/calculate-rfc.js" },
       { "src": "/health", "dest": "/api/health.js" },
       { "src": "/(.*)", "dest": "/public/$1" }
-    ],
-    "functions": {
-      "api/*.js": {
-        "memory": 1024,
-        "maxDuration": 10
-      }
-    }
+    ]
   }
