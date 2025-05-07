@@ -33,13 +33,12 @@ module.exports = async (req, res) => {
   try {
     console.log(`Iniciando consulta para CURP: ${curp}`);
     
-    browser = await chromium.puppeteer.launch({
-      args: [...chromium.args, '--hide-scrollbars', '--disable-web-security'],
-      defaultViewport: chromium.defaultViewport,
-      executablePath: await chromium.executablePath,
-      headless: true,
-      ignoreHTTPSErrors: true,
-    });
+    
+     browser = await puppeteer.launch({
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        headless: "new"
+      });
+      
     
     const page = await browser.newPage();
     
@@ -140,13 +139,11 @@ module.exports = async (req, res) => {
     console.log('Iniciando cálculo de RFC...');
     console.log(`Datos: ${nombre} ${primerApellido} ${segundoApellido}, ${dia}/${mes}/${anio}`);
     
-    browser = await chromium.puppeteer.launch({
-      args: [...chromium.args, '--hide-scrollbars', '--disable-web-security'],
-      defaultViewport: chromium.defaultViewport,
-      executablePath: await chromium.executablePath,
-      headless: true,
-      ignoreHTTPSErrors: true,
-    });
+     browser = await puppeteer.launch({
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        headless: "new"
+      });
+      
     
     const page = await browser.newPage();
     
